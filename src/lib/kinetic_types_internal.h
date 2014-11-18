@@ -36,6 +36,9 @@
 #define KINETIC_CONNECTION_INITIAL_STATUS_TIMEOUT_SECS (3)
 #define KINETIC_PDU_RECEIVE_TIMEOUT_SECS (5)
 
+// How many msec to sleep when pausing, to avoid busy-waiting
+#define KINETIC_CONNECTION_SLEEP_MSEC (10)
+
 // Ensure __func__ is defined (for debugging)
 #if !defined __func__
 #define __func__ __FUNCTION__

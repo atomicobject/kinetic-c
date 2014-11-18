@@ -192,7 +192,8 @@ KineticStatus KineticOperation_ReceiveAsync(KineticOperation* const operation)
                 timeout = true;
             }
             else {
-                sleep(0);
+                struct timespec rqtp = { 0, KINETIC_CONNECTION_SLEEP_MSEC * 1000L * 1000L };
+                nanosleep(&rqtp, NULL);
             }
         }
 

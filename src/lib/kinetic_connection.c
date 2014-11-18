@@ -41,6 +41,12 @@ void KineticConnection_Pause(KineticConnection* const connection, bool pause)
     connection->thread.paused = pause;
 }
 
+static int sleep_msec(uint16_t msec)
+{
+    struct timespec rqtp = { 0, msec * 1000L * 1000L };
+    return nanosleep(&rqtp, NULL);
+}
+
 static void* KineticConnection_Worker(void* thread_arg)
 {
     KineticStatus status;
@@ -50,7 +56,7 @@ static void* KineticConnection_Worker(void* thread_arg)
 
         // Do not service PDUs if thread paused
         if (thread->paused) {
-            sleep(0);
+            sleep_msec(KINETIC_CONNECTION_SLEEP_MSEC);
             continue;
         } 
 
@@ -132,7 +138,7 @@ static void* KineticConnection_Worker(void* thread_arg)
             case KINETIC_WAIT_STATUS_TIMED_OUT:
             case KINETIC_WAIT_STATUS_RETRYABLE_ERROR:
             {
-                sleep(0);
+                sleep_msec(KINETIC_CONNECTION_SLEEP_MSEC);
             } break;
             default:
             case KINETIC_WAIT_STATUS_FATAL_ERROR:
