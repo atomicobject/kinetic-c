@@ -324,8 +324,8 @@ void *sender_mainloop(void *arg) {
     sender *self = (sender *)arg;
     assert(self);
     struct bus *b = self->bus;
-    
-    int delay = 1;
+    const int min_delay = 10; /* Default to 10 ms max period for sender */
+    int delay = min_delay;
     
     struct timeval tv;
     gettimeofday(&tv, NULL);
@@ -379,7 +379,7 @@ void *sender_mainloop(void *arg) {
         }
         
         if (work) {
-            delay = 1;
+            delay = min_delay;
         } else {
             delay <<= 1;
             if (delay > MAX_TIMEOUT) { delay = MAX_TIMEOUT; }

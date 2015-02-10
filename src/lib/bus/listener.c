@@ -275,7 +275,8 @@ void *listener_mainloop(void *arg) {
     listener *self = (listener *)arg;
     assert(self);
     struct bus *b = self->bus;
-    int timeout = 1;
+    const int default_timeout = 10; /* Default to 10 ms max period for listener */
+    int timeout = default_timeout;
 
     struct timeval tv;
     
@@ -328,7 +329,7 @@ void *listener_mainloop(void *arg) {
         if (work_done) {
             timeout = 0;
         } else if (timeout == 0) {
-            timeout = 1;
+            timeout = default_timeout;
         } else {
             timeout <<= 1;
             if (timeout > MAX_TIMEOUT) {

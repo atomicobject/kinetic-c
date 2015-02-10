@@ -260,7 +260,7 @@ install: $(KINETIC_LIB) $(KINETIC_SO_DEV)
 	$(INSTALL) -d $(PREFIX)${LIBDIR}
 	$(INSTALL) -c $(KINETIC_LIB) $(PREFIX)${LIBDIR}/
 	$(INSTALL) -d $(PREFIX)/include/
-	$(INSTALL) -c $(PUB_INC)/$kinetic_client.h $(PREFIX)/include/
+	$(INSTALL) -c $(PUB_INC)/kinetic_client.h $(PREFIX)/include/
 	$(INSTALL) -c $(PUB_INC)/kinetic_types.h $(PREFIX)/include/
 	$(INSTALL) -c $(PUB_INC)/kinetic_semaphore.h $(PREFIX)/include/
 	$(INSTALL) -c $(PUB_INC)/byte_array.h $(PREFIX)/include/

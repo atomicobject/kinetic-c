@@ -60,7 +60,7 @@ void test_kinetic_client_should_store_a_binary_object_split_across_entries_via_o
 
     KineticClientConfig config = {
         .logFile = "stdout",
-        .logLevel = 0,
+        .logLevel = 1,
     };
     KineticClient * client = KineticClient_Init(&config);
 

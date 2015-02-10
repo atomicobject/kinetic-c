@@ -39,7 +39,7 @@ void run_throghput_tests(size_t num_ops, size_t value_size)
         "Throughput Tests\n"
         "========================================\n"
         "Entry Size: %zu bytes\n"
-        "Count:      %zu entries",
+        "Count:      %zu entries\n\n",
         value_size, num_ops );
 
     ByteBuffer test_data = ByteBuffer_Malloc(value_size);
@@ -58,7 +58,7 @@ void run_throghput_tests(size_t num_ops, size_t value_size)
     };
     KineticClientConfig config = {
         .logFile = "stdout",
-        .logLevel = 0,
+        .logLevel = 1,
     };
     KineticClient * client = KineticClient_Init(&config);
 

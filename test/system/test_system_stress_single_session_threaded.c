@@ -322,10 +322,10 @@ void run_tests(KineticClient * client)
 
     // Prepare per-thread test data
     TestParams params[] = { 
-        { .client = client, .session = &session, .thread_iters = 2, .num_ops = 500,  .obj_size = KINETIC_OBJ_SIZE },
-        { .client = client, .session = &session, .thread_iters = 2, .num_ops = 1000, .obj_size = 120,             },
-        { .client = client, .session = &session, .thread_iters = 2, .num_ops = 1500, .obj_size = 500,             },
-        { .client = client, .session = &session, .thread_iters = 2, .num_ops = 500,  .obj_size = 70000,           },
+        { .client = client, .session = &session, .thread_iters = 1, .num_ops = 500,  .obj_size = KINETIC_OBJ_SIZE },
+        { .client = client, .session = &session, .thread_iters = 1, .num_ops = 1000, .obj_size = 120,             },
+        { .client = client, .session = &session, .thread_iters = 1, .num_ops = 1500, .obj_size = 500,             },
+        { .client = client, .session = &session, .thread_iters = 1, .num_ops = 500,  .obj_size = 70000,           },
         // { .client = client, .session = &session, .thread_iters = 2, .num_ops = 1000, .obj_size = 120,             },
         // { .client = client, .session = &session, .thread_iters = 3, .num_ops = 1000, .obj_size = 120,             },
         // { .client = client, .session = &session, .thread_iters = 2, .num_ops = 100,  .obj_size = KINETIC_OBJ_SIZE },
@@ -352,7 +352,7 @@ void run_tests(KineticClient * client)
 void test_kinetic_client_throughput_test_kinetic_client_throughput_(void)
 {
     srand(time(NULL));
-    const uint32_t max_runs = 2;
+    const uint32_t max_runs = 1;
 
     for (uint32_t i = 0; i < max_runs; i++) {
         LOG0( "============================================================================================");
